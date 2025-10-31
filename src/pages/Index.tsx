@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Hero3D from '@/components/Hero3D';
 import ProductCard from '@/components/ProductCard';
@@ -10,6 +11,8 @@ import daruma3 from '@/assets/daruma-3.jpg';
 import { Button } from '@/components/ui/button';
 
 const Index = () => {
+  const [selectedColor, setSelectedColor] = useState<'red' | 'gold' | 'blue'>('red');
+  
   const products = [
     { id: 'daruma-red', image: daruma1, title: 'Daruma Rouge Traditionnel', price: 45 },
     { id: 'daruma-gold', image: daruma2, title: 'Daruma Doré Fortune', price: 55 },
@@ -58,7 +61,7 @@ const Index = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Hero3D />
+            <Hero3D selectedColor={selectedColor} onColorChange={setSelectedColor} />
           </motion.div>
         </div>
       </section>
