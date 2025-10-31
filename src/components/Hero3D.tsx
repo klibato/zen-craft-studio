@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, Environment } from '@react-three/drei';
 import { Suspense } from 'react';
+import { motion } from 'framer-motion';
 
 function DarumaModel() {
   return (
@@ -91,12 +92,35 @@ export default function Hero3D() {
       </Canvas>
       
       {/* Decorative elements */}
-      <div className="absolute top-10 left-10 text-accent text-6xl md:text-8xl opacity-20 animate-float">
+      <motion.div
+        className="absolute top-10 left-10 text-accent text-6xl md:text-8xl opacity-30"
+        animate={{
+          y: [0, -20, 0],
+          rotate: [0, 5, 0],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
         ⛩
-      </div>
-      <div className="absolute bottom-10 right-10 text-accent text-6xl md:text-8xl opacity-20 animate-float" style={{ animationDelay: '1s' }}>
+      </motion.div>
+      <motion.div
+        className="absolute bottom-10 right-10 text-accent text-6xl md:text-8xl opacity-30"
+        animate={{
+          y: [0, -15, 0],
+          rotate: [0, -5, 0],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1
+        }}
+      >
         🌸
-      </div>
+      </motion.div>
     </div>
   );
 }

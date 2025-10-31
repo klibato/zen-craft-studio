@@ -11,9 +11,9 @@ import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const products = [
-    { image: daruma1, title: 'Daruma Traditionnel', price: '45€' },
-    { image: daruma2, title: 'Daruma Artisanal', price: '38€' },
-    { image: daruma3, title: 'Daruma Doré', price: '52€' },
+    { id: 'daruma-red', image: daruma1, title: 'Daruma Rouge Traditionnel', price: 45 },
+    { id: 'daruma-gold', image: daruma2, title: 'Daruma Doré Fortune', price: 55 },
+    { id: 'daruma-blue', image: daruma3, title: 'Daruma Bleu Sagesse', price: 50 },
   ];
 
   return (

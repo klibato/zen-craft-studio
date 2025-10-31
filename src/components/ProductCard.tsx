@@ -1,15 +1,25 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { ShoppingCart, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useCart, Product } from '@/contexts/CartContext';
 
 interface ProductCardProps {
+  id: string;
   image: string;
   title: string;
-  price: string;
+  price: number;
   delay?: number;
 }
 
-export default function ProductCard({ image, title, price, delay = 0 }: ProductCardProps) {
+export default function ProductCard({ id, image, title, price, delay = 0 }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    const product: Product = { id, name: title, price, image };
+    addToCart(product);
+  };
 
   return (
     <motion.div
@@ -41,9 +51,19 @@ export default function ProductCard({ image, title, price, delay = 0 }: ProductC
             transition={{ duration: 0.4 }}
           />
         </div>
-        <div className="p-6">
-          <h3 className="font-display text-2xl mb-2 text-foreground">{title}</h3>
-          <p className="text-gradient-gold text-xl font-bold">{price}</p>
+        <div className="p-6 space-y-4">
+          <div>
+            <h3 className="font-display text-2xl mb-2 text-foreground">{title}</h3>
+            <p className="text-gradient-gold text-xl font-bold">{price}€</p>
+          </div>
+          <Button
+            onClick={handleAddToCart}
+            className="w-full bg-gradient-to-r from-daruma-red to-daruma-red/80 hover:from-daruma-red/90 hover:to-daruma-red/70 text-white font-japanese shadow-md hover:shadow-lg transition-all group"
+          >
+            <ShoppingCart className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+            Ajouter au panier
+            <Sparkles className="ml-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
+          </Button>
         </div>
       </motion.div>
       

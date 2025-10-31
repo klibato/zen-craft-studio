@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import Cart from './Cart';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,7 +35,7 @@ export default function Navigation() {
             達磨 DARUMA
           </motion.h1>
           
-          <div className="flex gap-6 md:gap-8">
+          <div className="flex items-center gap-6 md:gap-8">
             {['Accueil', 'Tradition', 'Collection', 'Contact'].map((item, index) => (
               <motion.button
                 key={item}
@@ -49,6 +50,7 @@ export default function Navigation() {
                 {item}
               </motion.button>
             ))}
+            <Cart />
           </div>
         </div>
       </div>
